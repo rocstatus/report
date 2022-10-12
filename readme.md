@@ -1,7 +1,4 @@
-echo "# report" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/rocstatus/report.git
-git push -u origin main
+#翼填报健康打卡
+ytb.xls 是填报人员数据
+需要添加 请在这里面添加数据
+
