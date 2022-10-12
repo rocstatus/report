@@ -1,5 +1,4 @@
 # This is a sample Python script.
-#!/usr/bin/python
 # coding:utf-8
 import xlrd
 import requests
@@ -7,7 +6,7 @@ import xlwt
 import datetime
 current_time = datetime.datetime.now()
 
-data = xlrd.open_workbook('/data/pushData/ytb.xlsx')
+data = xlrd.open_workbook('ytb.xlsx')
 table = data.sheets()[0]
 nrows = table.nrows
 current_time = datetime.datetime.now()
@@ -60,7 +59,7 @@ for i in range(nrows):
                             "name": "SYS_DATE",
                             "source": "interface",
                             "type": "date",
-                            "value": "2022-09-29 13:00:10"
+                            "value": "2022-10-12 09:05:17"
                         }, {
                             "name": "SYS_ROLE",
                             "source": "interface",
@@ -76,7 +75,7 @@ for i in range(nrows):
                     "recordCount": 0,
                     "parameters": {}
                 },
-                "ba11c60c-7f7f-47d1-8583-04e0251b": {
+                "036f7c06-6e4a-49de-96c4-5d63bc18": {
                     "rowSet": {
                         "primary": [{
                             "aa7eHRj": "22063481401618432,云中台",
@@ -97,6 +96,9 @@ for i in range(nrows):
                             "aa1Cthd": "否",
                             "aayakCt": "",
                             "aankr7d": "",
+                            "aa4iYCe": "否",
+                            "aajrGPE": "",
+                            "aaH1yE4": "",
                             "aayHsh2": "本人承诺：遵守“非必要，不出市，非必要，不聚集”的规定，出现核酸检测阳性、被通知为密接者、次密接者等情况，要主动、及时地向所在单位和社区报告；主动做好个人防护，按照属地要求做好流调、隔离等自我防控工作。能够主动按照当地政府、防疫部门要求的频次进行核酸检测。保证个人及同住家属做到次次参加，100%按规定核检。如实上报本人、同住人员从重点地区来（返）信息。疫情期间服从公司安排和抗疫要求，填报内容属实，如有违反将承担相应责任。",
                             "aaSE66f": "",
                             "_o": {
@@ -117,6 +119,9 @@ for i in range(nrows):
                                 "aa1Cthd": "null",
                                 "aayakCt": "null",
                                 "aankr7d": "null",
+                                "aa4iYCe": "null",
+                                "aajrGPE": "null",
+                                "aaH1yE4": "null",
                                 "aayHsh2": "null",
                                 "aaSE66f": "null"
                             }
@@ -124,7 +129,7 @@ for i in range(nrows):
                         "filter": [],
                         "delete": []
                     },
-                    "name": "ba11c60c-7f7f-47d1-8583-04e0251b",
+                    "name": "036f7c06-6e4a-49de-96c4-5d63bc18",
                     "pageNumber": 1,
                     "pageSize": 2147483647,
                     "recordCount": 1,
@@ -133,22 +138,22 @@ for i in range(nrows):
                         "relatedcontrols": "body_0",
                         "primarykey": "pk_id",
                         "foreignkey": "fk_id",
-                        "queryds": "ba11c60c-7f7f-47d1-8583-04e0251b"
+                        "queryds": "036f7c06-6e4a-49de-96c4-5d63bc18"
                     }
                 }
             },
             "parameters": {
                 "formid": "4a1d22b4-8647-4d5c-82c9-bca3f4fa",
                 "print_settings": "",
-                "showTab": "true",
+                "assignment_id": "74a5968d-9384-4a1e-8fef-cda197dc034b",
                 "submitter": table.row_values(i)[:6][3],
                 "validateType": "wechatValidate",
-                "assignment_id": "74a5968d-9384-4a1e-8fef-cda197dc034b",
                 "submitterName": table.row_values(i)[:6][4],
                 "vs": table.row_values(i)[:6][5]
             }
         }
     }
+
     r = requests.post(url, headers=h, json=d)
 print(r.text)
 book = xlwt.Workbook(encoding='utf-8', style_compression=0)
@@ -162,6 +167,5 @@ for j in range(0, 3):
 #       for x in range(0, 3):
 #           sheet.write(k+1, x, data[x])
 
-savepath = '/data/pushData/success.xls'
+savepath = 'D:/personal/pushData/success.xls'
 book.save(savepath)
-
