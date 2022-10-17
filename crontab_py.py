@@ -5,8 +5,6 @@ import requests
 import datetime
 import time
 import random
-import pyautogui
-import pyperclip
 current_time = datetime.datetime.now()
 
 data = xlrd.open_workbook('ytb.xlsx')
