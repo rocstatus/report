@@ -5,16 +5,18 @@ import requests
 import datetime
 import time
 import random
+# import pyautogui
+# import pyperclip
 current_time = datetime.datetime.now()
 
-data = xlrd.open_workbook('ytb.xlsx')
+# data = xlrd.open_workbook('ytb.xlsx')
+data = xlrd.open_workbook('/root/report/ytb.xlsx')
 table = data.sheets()[0]
 nrows = table.nrows
 current_time = datetime.datetime.now()
 for i in range(nrows):
     if i == 0:
         continue
-    datalist = [[str(current_time), table.row_values(i)[:6][0], '成功'], [str(current_time), table.row_values(i)[:6][0], '成功']]
     url = 'https://ytb.xian-industrycloud.com/sxdxytb/formParser?status=update&formid=4a1d22b4-8647-4d5c-82c9-bca3f4fa&workflowAction=none&workitemid=&process='
     h = {
         'Content-Type': 'application/json;charset=UTF-8',
@@ -34,56 +36,7 @@ for i in range(nrows):
         },
         "body": {
             "dataStores": {
-                "variable": {
-                    "rowSet": {
-                        "primary": [
-                            {
-                                "name": "SYS_USER",
-                                "source": "interface",
-                                "type": "string",
-                                "value": ""
-                            },
-                            {
-                                "name": "SYS_UNIT",
-                                "source": "interface",
-                                "type": "string",
-                                "value": ""
-                            },
-                            {
-                                "name": "SYS_UNIT_PATH",
-                                "source": "interface",
-                                "type": "string",
-                                "value": ""
-                            },
-                            {
-                                "name": "SYS_DATE",
-                                "source": "interface",
-                                "type": "date",
-                                "value": "2022-10-13 14:08:59"
-                            },
-                            {
-                                "name": "SYS_ROLE",
-                                "source": "interface",
-                                "type": "string",
-                                "value": ""
-                            }
-                        ],
-                        "filter": [
-
-                        ],
-                        "delete": [
-
-                        ]
-                    },
-                    "name": "variable",
-                    "pageNumber": 1,
-                    "pageSize": 2147483647,
-                    "recordCount": 0,
-                    "parameters": {
-
-                    }
-                },
-                "f6a9646d-70c3-43c6-8ef4-0d539473": {
+                "ad5daa5c-61af-436b-b1e0-38801231": {
                     "rowSet": {
                         "primary": [
                             {
@@ -130,14 +83,10 @@ for i in range(nrows):
                                 }
                             }
                         ],
-                        "filter": [
-
-                        ],
-                        "delete": [
-
-                        ]
+                        "filter": [],
+                        "delete": []
                     },
-                    "name": "f6a9646d-70c3-43c6-8ef4-0d539473",
+                    "name": "ad5daa5c-61af-436b-b1e0-38801231",
                     "pageNumber": 1,
                     "pageSize": 2147483647,
                     "recordCount": 1,
@@ -146,8 +95,51 @@ for i in range(nrows):
                         "relatedcontrols": "body_0",
                         "primarykey": "pk_id",
                         "foreignkey": "fk_id",
-                        "queryds": "f6a9646d-70c3-43c6-8ef4-0d539473"
+                        "queryds": "ad5daa5c-61af-436b-b1e0-38801231"
                     }
+                },
+                "variable": {
+                    "rowSet": {
+                        "primary": [
+                            {
+                                "name": "SYS_USER",
+                                "source": "interface",
+                                "type": "string",
+                                "value": ""
+                            },
+                            {
+                                "name": "SYS_UNIT",
+                                "source": "interface",
+                                "type": "string",
+                                "value": ""
+                            },
+                            {
+                                "name": "SYS_UNIT_PATH",
+                                "source": "interface",
+                                "type": "string",
+                                "value": ""
+                            },
+                            {
+                                "name": "SYS_DATE",
+                                "source": "interface",
+                                "type": "date",
+                                "value": "2022-10-20 09:12:00"
+                            },
+                            {
+                                "name": "SYS_ROLE",
+                                "source": "interface",
+                                "type": "string",
+                                "value": ""
+                            }
+                        ],
+                        "filter": [],
+                        "delete": []
+                    },
+                    "name": "variable",
+                    "pageNumber": 1,
+                    "pageSize": 2147483647,
+                    "recordCount": 0,
+                    "parameters": {}
                 }
             },
             "parameters": {
@@ -161,6 +153,7 @@ for i in range(nrows):
             }
         }
     }
+
     r = requests.post(url, headers=h, json=d)
     print(table.row_values(i)[:6][0])
     print(r.text)
@@ -183,4 +176,4 @@ for i in range(nrows):
     waits = random.randrange(10, 20)
     print(waits)
     time.sleep(waits)
-    pyautogui.hotkey('ctrl', 'alt', 'w')
+    # pyautogui.hotkey('ctrl', 'alt', 'w')
